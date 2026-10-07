@@ -1,7 +1,7 @@
 /// <reference types="node" />
 import { existsSync, readFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
-import { describe, expect, it } from 'vitest'
+import { beforeAll, describe, expect, it } from 'vitest'
 import { ROUTINE_BY_CODE } from '../../data/plan'
 import { suggestLoad } from '../progression'
 import { customIdFromName, parseOpenGymBackup } from './parseBackup'
@@ -21,8 +21,13 @@ describe('customIdFromName', () => {
 const REAL = fileURLToPath(new URL('./__fixtures__/backup.2026-10-07.real.json', import.meta.url))
 
 describe.skipIf(!existsSync(REAL))('copia real de OpenGym (7 oct 2026)', () => {
-  const parsed = parseOpenGymBackup(readFileSync(REAL, 'utf8'))
-  const session = parsed.sessions[0]
+  // El cuerpo del describe se ejecuta aunque se salte: leer el archivo solo dentro de los tests.
+  let parsed: ReturnType<typeof parseOpenGymBackup>
+  let session: (typeof parsed.sessions)[number]
+  beforeAll(() => {
+    parsed = parseOpenGymBackup(readFileSync(REAL, 'utf8'))
+    session = parsed.sessions[0]
+  })
 
   it('lee la sesión A con duración y sin avisos', () => {
     expect(parsed.warnings).toEqual([])
