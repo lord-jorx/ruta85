@@ -1,0 +1,122 @@
+/*
+  Ruta 85 · tokens de diseño ("marcador de vestuario").
+  :root = claro. Oscuro (por defecto en la app, vía data-theme="dark" en <html>):
+  se redefine con prefers-color-scheme cuando el usuario elige "Sistema" y
+  explícitamente con [data-theme="dark"].
+
+  Paleta de series validada con validate_palette.js:
+    oscuro (superficie #1f2225): #c97d00 #3f8fd6 #2b9d66  -> todo PASS
+    claro  (superficie #fbfaf6): #b86e00 #1f6fc0 #1a8a55  -> todo PASS
+*/
+
+:root {
+  color-scheme: light;
+
+  /* superficies */
+  --bg: #f2f0ea;
+  --surface: #fbfaf6;
+  --surface-2: #ebe8e0;
+  --line: #d3cfc2;
+  --line-soft: #e3e0d6;
+
+  /* tinta */
+  --ink: #1c1e20;
+  --ink-2: #444a50;
+  --muted: #5c6268;
+
+  /* acción / "ahora" */
+  --accent: #ffb020;
+  --accent-strong: #f09a00;
+  --accent-ink: #8a5000; /* ámbar legible como texto sobre superficie */
+  --on-accent: #1b1405;
+  --accent-wash: rgb(255 176 32 / 0.16);
+
+  /* estado */
+  --ok: #167a49;
+  --ok-wash: rgb(22 122 73 / 0.12);
+  --warn: #a35400;
+  --warn-wash: rgb(163 84 0 / 0.12);
+  --crit: #c1362a;
+  --crit-wash: rgb(193 54 42 / 0.12);
+
+  /* series de gráficas */
+  --s1: #b86e00;
+  --s2: #1f6fc0;
+  --s3: #1a8a55;
+  --grid: #e1ddd2;
+
+  --focus: #1f6fc0;
+  --shadow: 0 1px 0 rgb(0 0 0 / 0.04);
+
+  /* forma */
+  --r-sm: 4px;
+  --r-md: 6px;
+  --r-lg: 8px;
+  --gutter: 16px;
+  --tabbar-h: 64px;
+  --tap: 44px;
+
+  /* tipografía */
+  --font-display: 'Barlow Condensed', 'Arial Narrow', 'Roboto Condensed', system-ui, sans-serif;
+  --font-body: 'Barlow', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+    --bg: #151719;
+    --surface: #1f2225;
+    --surface-2: #282c30;
+    --line: #3a4046;
+    --line-soft: #2c3135;
+    --ink: #f1efe9;
+    --ink-2: #bcc1c7;
+    --muted: #949ba2;
+    --accent: #ffb020;
+    --accent-strong: #ffc247;
+    --accent-ink: #ffb020;
+    --on-accent: #1b1405;
+    --accent-wash: rgb(255 176 32 / 0.14);
+    --ok: #4fd08f;
+    --ok-wash: rgb(79 208 143 / 0.13);
+    --warn: #ff9a3c;
+    --warn-wash: rgb(255 154 60 / 0.13);
+    --crit: #ff6b5e;
+    --crit-wash: rgb(255 107 94 / 0.14);
+    --s1: #c97d00;
+    --s2: #3f8fd6;
+    --s3: #2b9d66;
+    --grid: #2d3236;
+    --focus: #ffd37a;
+    --shadow: none;
+  }
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #151719;
+  --surface: #1f2225;
+  --surface-2: #282c30;
+  --line: #3a4046;
+  --line-soft: #2c3135;
+  --ink: #f1efe9;
+  --ink-2: #bcc1c7;
+  --muted: #949ba2;
+  --accent: #ffb020;
+  --accent-strong: #ffc247;
+  --accent-ink: #ffb020;
+  --on-accent: #1b1405;
+  --accent-wash: rgb(255 176 32 / 0.14);
+  --ok: #4fd08f;
+  --ok-wash: rgb(79 208 143 / 0.13);
+  --warn: #ff9a3c;
+  --warn-wash: rgb(255 154 60 / 0.13);
+  --crit: #ff6b5e;
+  --crit-wash: rgb(255 107 94 / 0.14);
+  --s1: #c97d00;
+  --s2: #3f8fd6;
+  --s3: #2b9d66;
+  --grid: #2d3236;
+  --focus: #ffd37a;
+  --shadow: none;
+}

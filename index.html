@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="es" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/ruta85/icon.svg" />
+    <link rel="apple-touch-icon" href="/ruta85/pwa-192.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#151719" />
+    <meta name="color-scheme" content="dark light" />
+    <meta name="description" content="Ruta 85: plan personal de entrenamiento, peso y dieta." />
+    <title>Ruta 85</title>
+    <script>
+      // Aplica el tema guardado antes del primer pintado para evitar el parpadeo.
+      // Por defecto: oscuro. "system" deja decidir al sistema.
+      try {
+        var t = localStorage.getItem('ruta85.theme')
+        var root = document.documentElement
+        if (t === 'light' || t === 'dark') root.setAttribute('data-theme', t)
+        else if (t === 'system') root.removeAttribute('data-theme')
+        if (t === 'light') document.querySelector('meta[name=theme-color]').setAttribute('content', '#f2f0ea')
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

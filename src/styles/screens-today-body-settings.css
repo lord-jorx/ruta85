@@ -1,0 +1,126 @@
+/* Estilos propios de Hoy, Cuerpo y Ajustes (sobre los tokens de tokens.css). */
+
+/* Hoy */
+.tbs-shifts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-2, 8px);
+  margin-top: var(--sp-3, 12px);
+}
+.tbs-last__head {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3, 12px);
+}
+.tbs-last__code {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  border: 2px solid currentColor;
+  font-size: 1.6rem;
+  line-height: 1;
+}
+.tbs-last__name {
+  margin: 0;
+}
+.tbs-last__list {
+  list-style: none;
+  margin: var(--sp-3, 12px) 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.tbs-last__list li {
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line, currentColor);
+  font-size: 0.85rem;
+}
+.tbs-undo {
+  margin: 2px 0 0 52px;
+  padding: 4px 0;
+  background: none;
+  border: 0;
+  color: inherit;
+  text-decoration: underline;
+  font: inherit;
+  font-size: 0.85rem;
+  opacity: 0.75;
+  cursor: pointer;
+}
+
+/* Cuerpo */
+.tbs-hist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 2px;
+}
+.tbs-hist__row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: var(--sp-3, 12px);
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line, rgba(128, 128, 128, 0.25));
+}
+.tbs-hist__date {
+  font-weight: 600;
+}
+.tbs-hist__vals {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
+.tbs-hist__note {
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+.tbs-row-actions {
+  display: flex;
+  gap: 6px;
+}
+.tbs-sheet-actions-left {
+  margin-right: auto;
+}
+
+/* Ajustes */
+.tbs-result {
+  margin: 0;
+  padding: var(--sp-3, 12px);
+  border-radius: 10px;
+  border: 1px solid var(--line, rgba(128, 128, 128, 0.35));
+}
+.tbs-result ul {
+  margin: 6px 0 0;
+  padding-left: 18px;
+  font-size: 0.85rem;
+}
+.tbs-imports {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0;
+}
+.tbs-imports li {
+  display: grid;
+  gap: 2px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line, rgba(128, 128, 128, 0.25));
+  font-size: 0.9rem;
+}
+.tbs-imports__name {
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+.tbs-code-input {
+  letter-spacing: 0.3em;
+  text-align: center;
+}

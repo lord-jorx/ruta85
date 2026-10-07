@@ -1,0 +1,150 @@
+{
+  "unit": "kg",
+  "restSec": 90,
+  "sound": true,
+  "lang": "es",
+  "theme": "dark",
+  "accent": "lime",
+  "body": "male",
+  "targetW": 85,
+  "bodyweight": [
+    { "d": "2026-10-05", "w": 95.4 },
+    { "d": "2026-10-06", "w": 95 },
+    { "d": "2026-10-10", "w": 94.6 }
+  ],
+  "routines": [
+    { "id": "r-a", "name": "A · Sentadilla + pecho", "ex": [] },
+    { "id": "r-b", "name": "B · Cadera + espalda (sin pecho)", "ex": [] },
+    { "id": "r-dl", "name": "Deload (semana ligera)", "excludeFromProgression": true, "ex": [] }
+  ],
+  "week": {},
+  "dayPlan": {},
+  "exWeights": {},
+  "customEx": [],
+  "workouts": [
+    {
+      "id": "wk-1001",
+      "d": "2026-10-06",
+      "start": 1791298800000,
+      "end": 1791302700000,
+      "name": "B · Cadera + espalda (sin pecho)",
+      "bw": 95,
+      "routineIds": ["r-b"],
+      "routineId": "r-b",
+      "prs": [],
+      "entries": [
+        {
+          "id": "0085",
+          "rid": "r-b",
+          "topW": 60,
+          "target": { "sets": 3, "reps": 5, "weight": 60 },
+          "sets": [
+            { "w": 30, "r": 5, "done": true, "phase": "warmup", "warmup": true },
+            { "w": 60, "r": 5, "done": true, "rir": 3 },
+            { "w": 60, "r": 5, "done": true, "rir": 2 },
+            { "w": 60, "r": 4, "done": true, "rir": 1 },
+            { "w": 60, "r": 5, "done": false }
+          ]
+        },
+        {
+          "id": "0861",
+          "rid": "r-b",
+          "topW": 20,
+          "target": { "sets": 3, "reps": 12, "repsMin": 8, "weight": 20, "side": true },
+          "sets": [
+            {
+              "w": 20, "r": 20, "done": true,
+              "sides": {
+                "L": { "w": 20, "r": 10, "done": true, "rir": 2 },
+                "R": { "w": 20, "r": 9, "done": true, "rir": 1 }
+              }
+            },
+            {
+              "w": 20, "r": 8, "done": false,
+              "sides": {
+                "L": { "w": 20, "r": 8, "done": true },
+                "R": { "w": 20, "r": 8, "done": false }
+              }
+            }
+          ]
+        },
+        {
+          "id": "c-plank",
+          "rid": "r-b",
+          "topW": null,
+          "target": { "sets": 3, "sec": 30, "mode": "time", "bodyweight": true },
+          "sets": [
+            { "w": 0, "sec": 30, "done": true },
+            { "w": 0, "sec": 35, "done": true },
+            { "w": 0, "sec": 30, "done": false }
+          ]
+        },
+        {
+          "id": "c-cardio",
+          "rid": "r-b",
+          "topW": null,
+          "target": { "sets": 1, "min": 10, "mode": "cardio" },
+          "sets": [{ "min": 10, "speed": 6, "done": true }]
+        }
+      ]
+    },
+    {
+      "id": "wk-1002",
+      "d": "2026-10-08",
+      "start": 1791439200000,
+      "end": 1791443400000,
+      "name": "A · Sentadilla + pecho",
+      "bw": 94.8,
+      "routineIds": ["r-a"],
+      "routineId": "r-a",
+      "note": "Rodilla bien",
+      "entries": [
+        {
+          "id": "3281",
+          "rid": "r-a",
+          "topW": 70,
+          "target": { "sets": 3, "reps": 5, "weight": 70 },
+          "sets": [
+            { "w": 70, "r": 5, "done": true, "rir": 2 },
+            { "w": 70, "r": 5, "done": true, "rir": 2 },
+            { "w": 70, "r": 5, "done": true, "rpe": 9 }
+          ]
+        },
+        {
+          "id": "0579",
+          "rid": "r-a",
+          "topW": 40,
+          "target": { "sets": 3, "reps": 12, "repsMin": 8, "weight": 40 },
+          "sets": [
+            { "w": 40, "r": 12, "done": true },
+            { "w": 40, "r": 12, "done": true },
+            { "w": 40, "r": 11, "done": true }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wk-1003",
+      "d": "2026-10-10",
+      "start": 1791619200000,
+      "end": 1791621600000,
+      "name": "Deload (semana ligera)",
+      "routineIds": ["r-dl"],
+      "routineId": "r-dl",
+      "excludeFromProgression": true,
+      "entries": [
+        {
+          "id": "3281",
+          "rid": "r-dl",
+          "noProg": true,
+          "topW": 40,
+          "target": { "sets": 2, "reps": 5, "weight": 40 },
+          "sets": [
+            { "w": 40, "r": 5, "done": true },
+            { "w": 40, "r": 5, "done": true }
+          ]
+        }
+      ]
+    }
+  ]
+}

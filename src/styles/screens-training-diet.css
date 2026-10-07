@@ -1,0 +1,210 @@
+/* Ruta 85 · estilos propios de Entreno (progresión real) y Dieta (registro real).
+   Solo tokens de tokens.css; los estilos base de la maqueta viven en screens.css. */
+
+/* ───────────── Entreno ───────────── */
+
+.td-last {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+  color: var(--ink-2);
+}
+
+.td-next {
+  align-items: flex-start;
+}
+.td-next__big {
+  font-size: 1.75rem;
+  line-height: 1.1;
+  color: var(--accent-ink);
+  margin: 2px 0 4px;
+}
+
+.td-stall {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 8px 0 0;
+  padding: 8px 10px;
+  border-radius: var(--r-md);
+  background: var(--warn-wash);
+  color: var(--warn);
+  font-weight: 600;
+}
+
+.td-e1rm {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid var(--line-soft);
+}
+.td-e1rm__row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 0 0 4px;
+}
+.td-e1rm__num {
+  font-size: 1.4rem;
+}
+.td-e1rm__num span {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.td-last-session {
+  margin-top: 10px;
+}
+.td-sets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 6px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.td-set {
+  padding: 4px 10px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  background: var(--surface-2);
+  font-variant-numeric: tabular-nums;
+}
+.td-set--warm {
+  color: var(--muted);
+  border-style: dashed;
+}
+.td-timed {
+  margin: 4px 0 0;
+  font-size: 1.3rem;
+}
+.td-none {
+  margin: 8px 0 0;
+}
+
+/* ───────────── Dieta ───────────── */
+
+.dt-days {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.dt-days__label {
+  flex: 1;
+  text-align: center;
+  margin: 0;
+}
+.dt-fav {
+  display: flex;
+  align-items: stretch;
+  gap: 4px;
+}
+.dt-fav .chip {
+  flex: 1;
+}
+.dt-fav__del {
+  border-color: var(--line);
+  height: auto;
+}
+
+.dt-entry {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.dt-entry__main {
+  flex: 1;
+  min-width: 0;
+  text-align: left;
+  background: none;
+  border: 0;
+  padding: 6px 0;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+.dt-entry__main small {
+  display: block;
+  color: var(--muted);
+}
+.dt-week {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.dt-week__cell p {
+  margin: 0;
+}
+.dt-week__num {
+  font-size: 1.6rem;
+}
+.dt-week__num span {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.dt-spend__num {
+  font-size: 2rem;
+  margin: 0;
+}
+.dt-spend__num span {
+  font-size: 1rem;
+  color: var(--muted);
+}
+.dt-spend__tag {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--warn-wash);
+  color: var(--warn);
+  font-size: 0.75rem;
+  font-weight: 600;
+  vertical-align: middle;
+}
+.dt-spend__tag--ok {
+  background: var(--ok-wash);
+  color: var(--ok);
+}
+
+.dt-form-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.dt-good,
+.dt-bad {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin: 2px 0 0;
+}
+.dt-good {
+  color: var(--ok);
+}
+.dt-bad {
+  color: var(--warn);
+}
+
+.dt-week__days {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 10px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.dt-week__days li {
+  display: grid;
+  grid-template-columns: 32px 1fr 48px;
+  align-items: center;
+  gap: 8px;
+}
+.dt-week__days .meter--thin {
+  margin-top: 0;
+}
+.dt-week__kcal {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
