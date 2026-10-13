@@ -9,11 +9,11 @@ describe('parseOpenGymBackup (fixture)', () => {
 
   it('metadatos y pesadas', () => {
     expect(out.unit).toBe('kg')
-    expect(out.targetW).toBe(85)
+    expect(out.targetW).toBe(75)
     expect(out.bodyweights).toEqual([
-      { date: '2026-10-05', weight: 95.4 },
-      { date: '2026-10-06', weight: 95 },
-      { date: '2026-10-10', weight: 94.6 },
+      { date: '2026-10-05', weight: 82.4 },
+      { date: '2026-10-06', weight: 82 },
+      { date: '2026-10-10', weight: 81.6 },
     ])
     expect(out.sessions).toHaveLength(3)
   })
@@ -77,12 +77,12 @@ describe('parseOpenGymBackup (casos límite)', () => {
   it('lb → kg con 2 decimales (series, pesadas y objetivo)', () => {
     const s = clone()
     s.unit = 'lb'
-    s.targetW = 187
-    s.bodyweight = [{ d: '2026-10-05', w: 210 }]
+    s.targetW = 165
+    s.bodyweight = [{ d: '2026-10-05', w: 180 }]
     const out = parseOpenGymBackup(s)
     expect(out.unit).toBe('lb')
-    expect(out.targetW).toBe(84.82)
-    expect(out.bodyweights).toEqual([{ date: '2026-10-05', weight: 95.25 }])
+    expect(out.targetW).toBe(74.84)
+    expect(out.bodyweights).toEqual([{ date: '2026-10-05', weight: 81.65 }])
     const w = out.sessions[0].sets.find((x) => x.exercise_id === '0085' && !x.is_warmup)!
     expect(w.weight).toBe(27.22) // 60 lb
   })

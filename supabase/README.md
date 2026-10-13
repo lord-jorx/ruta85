@@ -13,7 +13,7 @@ copia en la nube y sincronización entre dispositivos. Es gratis para un único 
 ## 2. Crear las tablas
 
 1. En el panel: **SQL Editor** → **New query**.
-2. Pega todo el contenido de [`migrations/001_init.sql`](./migrations/001_init.sql) y pulsa **Run**.
+2. Pega el contenido de [`migrations/001_init.sql`](./migrations/001_init.sql) y pulsa **Run**; después haz lo mismo con [`migrations/002_revoke_extra_privileges.sql`](./migrations/002_revoke_extra_privileges.sql).
 3. Debe terminar con `Success. No rows returned`. Es seguro volver a ejecutarlo.
 4. Comprueba en **Table Editor** que existen 9 tablas (`settings`, `body_logs`, `sessions`,
    `session_sets`, `activities`, `shifts`, `food_logs`, `food_favorites`, `imports`) y que cada una
@@ -58,8 +58,11 @@ VITE_SUPABASE_ANON_KEY=tu-clave-anon-o-publishable
 ```
 
 Reinicia `npm run dev`. En GitHub Actions: repositorio → **Settings → Secrets and variables →
-Actions → New repository secret** y crea `VITE_SUPABASE_URL` y `VITE_SUPABASE_ANON_KEY` con los
-mismos valores (el workflow de despliegue los inyecta en el build).
+Actions → pestaña Variables → New repository variable** y crea `VITE_SUPABASE_URL` y
+`VITE_SUPABASE_ANON_KEY` con los mismos valores. Tienen que ser **Variables, no Secrets**: el
+workflow de despliegue las lee con `vars.*`, y si las creas como secrets el build sale sin
+claves y la app queda en modo solo local sin avisar. La anon/publishable key es pública por
+diseño, así que una variable es correcta.
 
 ## Seguridad: lo que NUNCA debe ir en la app
 
