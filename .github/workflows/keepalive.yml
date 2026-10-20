@@ -1,5 +1,6 @@
 # Supabase gratis pausa el proyecto tras 7 días sin actividad: una consulta cada 3 días lo mantiene despierto.
-# Usa solo la URL y la clave publishable (públicas); con RLS la respuesta es una lista vacía.
+# Usa solo la URL y la clave publishable (públicas). Postgres responde 401 "permission denied"
+# (anon no tiene permisos en las tablas, a propósito): la consulta llega a la base y cuenta como actividad.
 name: Supabase keep-alive
 
 on:
@@ -16,8 +17,9 @@ jobs:
     steps:
       - name: Consulta a la API
         run: |
-          curl -fsS "$URL/rest/v1/settings?select=id&limit=1" \
-            -H "apikey: $KEY" -H "Authorization: Bearer $KEY"
+          code=$(curl -s -o /dev/null -w '%{http_code}' "$URL/rest/v1/settings?select=id&limit=1" -H "apikey: $KEY")
+          echo "HTTP $code"
+          [ "$code" = 200 ] || [ "$code" = 401 ]
         env:
           URL: ${{ vars.VITE_SUPABASE_URL }}
           KEY: ${{ vars.VITE_SUPABASE_ANON_KEY }}
