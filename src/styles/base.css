@@ -180,3 +180,8 @@ table {
   grid-template-columns: 1fr 1fr;
   gap: 12px;
 }
+
+/* Un campo numérico con − / + y unidad necesita ~220 px: en dos columnas el input queda a 24 px y no se ven las cifras. */
+.grid-2:has(.field__step) {
+  grid-template-columns: 1fr;
+}
