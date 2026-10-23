@@ -226,7 +226,7 @@ interface TextFieldProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'on
   hint?: string
 }
 
-export function TextField({ label, value, onChange, hint, id, ...rest }: TextFieldProps) {
+export function TextField({ label, value, onChange, hint, id, className, ...rest }: TextFieldProps) {
   const auto = useId()
   const fid = id ?? auto
   return (
@@ -237,7 +237,7 @@ export function TextField({ label, value, onChange, hint, id, ...rest }: TextFie
       <div className="field__control">
         <input
           id={fid}
-          className="field__input field__input--text"
+          className={className ? `field__input field__input--text ${className}` : 'field__input field__input--text'}
           value={value}
           onChange={(e) => onChange(e.target.value)}
           aria-describedby={hint ? `${fid}-hint` : undefined}

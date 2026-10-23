@@ -13,6 +13,8 @@ import './styles/base.css'
 import './styles/components.css'
 import './styles/screens.css'
 import App from './App'
+// Al final: las hojas de cada pantalla se cargan con App y refine.css tiene que ganar a todas.
+import './styles/refine.css'
 
 // Service worker: se actualiza solo y deja la app disponible sin conexión.
 registerSW({ immediate: true })

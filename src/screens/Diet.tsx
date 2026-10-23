@@ -518,7 +518,7 @@ export function Diet() {
               <div className="meter__fill" style={{ width: `${Math.min(100, (adaptive.days / DAYS_NEEDED) * 100)}%` }} />
             </div>
             <p className="muted small">
-              {adaptive.days} de {DAYS_NEEDED} días con comida registrada · {weighIns} de 6 pesadas.{' '}
+              {adaptive.days} de {DAYS_NEEDED} días con comida registrada · {weighIns} {weighIns === 1 ? 'pesada' : 'pesadas'} (mínimo 6).{' '}
               {manual != null
                 ? `Mientras tanto se usa tu mantenimiento manual de ${num(manual)} kcal.`
                 : 'Sin mantenimiento manual en Ajustes aún no hay objetivo de calorías.'}

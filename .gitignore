@@ -34,3 +34,5 @@ src/lib/opengym/__fixtures__/*.real.json
 
 # Notas de orquestación (locales)
 PROGRESS.md
+# Contexto de producto para las skills de diseño: describe el uso personal, no se publica
+PRODUCT.md

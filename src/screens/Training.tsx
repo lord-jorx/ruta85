@@ -84,6 +84,13 @@ function ago(date: string, today: string): string {
 
 const KNEE_LABEL: Record<Routine['kneeLoad'], string> = { high: 'Rodilla: carga alta', low: 'Rodilla: carga baja', none: 'Rodilla: sin carga' }
 const KNEE_ICON = { high: 'warn', low: 'ok', none: 'ok' } as const
+const KNEE_SHORT: Record<Routine['kneeLoad'], string> = { high: 'rodilla alta', low: 'rodilla baja', none: 'sin rodilla' }
+
+/** Letra de la ficha de la rutina: A, B, C; las de casa como C1 y C2 (en el plan son H1 y H2). */
+function tileOf(code: RoutineCode): string {
+  return code === 'H1' ? 'C1' : code === 'H2' ? 'C2' : code
+}
+
 const PLACE_LABEL: Record<Routine['place'], string> = { gym: 'Gimnasio', home: 'Casa', any: 'Donde quieras' }
 
 function minutes(r: Routine) {
@@ -139,34 +146,18 @@ export function Training() {
           return (
             <li key={r.code}>
               <Link to={`/entreno/${r.code}`} className={cx('routine', isToday && 'routine--today')}>
-                <span className="routine__emoji" aria-hidden="true">
-                  {r.emoji}
+                <span className="routine__code display" aria-hidden="true">
+                  {tileOf(r.code)}
                 </span>
                 <span className="routine__body">
-                  <span className="routine__name">{r.name}</span>
+                  <span className="routine__name">{r.name.replace(/^[ABC] · /, '')}</span>
                   <span className="routine__focus muted small">{focusOf(r)}</span>
                   <span className="routine__meta">
-                    <span className="pill">
-                      <Icon name="reloj" size={14} />
-                      {minutes(r)}
-                    </span>
-                    <KneePill load={r.kneeLoad} />
-                    {isToday && (
-                      <span className="pill pill--now">
-                        <Icon name="estrella" size={14} />
-                        Hoy
-                      </span>
-                    )}
-                  </span>
-                  <span className="td-last small">
-                    <Icon name="check" size={14} />
-                    {last ? (
-                      <span>
-                        Última vez: <b>{fmtShort(last)}</b> <span className="muted">({ago(last, today)})</span>
-                      </span>
-                    ) : (
-                      <span className="muted">Aún sin registrar</span>
-                    )}
+                    {isToday && <b>Hoy · </b>}
+                    {minutes(r)} ·{' '}
+                    <span className={r.kneeLoad === 'high' ? 'is-warn' : undefined}>{KNEE_SHORT[r.kneeLoad]}</span>
+                    {' · '}
+                    {last ? ago(last, today) : 'sin registrar'}
                   </span>
                 </span>
                 <Icon name="flecha" size={20} className="routine__go" />
@@ -364,11 +355,11 @@ export function RoutineDetail() {
     <div className="stack">
       <Card>
         <div className="detail__head">
-          <span className="detail__emoji" aria-hidden="true">
-            {routine.emoji}
+          <span className="detail__code display" aria-hidden="true">
+            {tileOf(routine.code)}
           </span>
           <div className="grow">
-            <h2 className="detail__name">{routine.name}</h2>
+            <h2 className="detail__name">{routine.name.replace(/^[ABC] · /, '')}</h2>
             <p className="muted small">{focusOf(routine)}</p>
           </div>
         </div>
