@@ -479,7 +479,7 @@ function pickColumns(name: TableName, r: AnyRow): AnyRow {
 export async function importAll(obj: unknown): Promise<Partial<Record<TableName, number>>> {
   const file = obj as Partial<ExportFile> | null
   if (!file || typeof file !== 'object' || file.app !== 'ruta85' || typeof file.tables !== 'object' || !file.tables) {
-    throw new Error('El archivo no es una copia de Ruta 85.')
+    throw new Error('El archivo no es una copia de Cota.')
   }
   if (typeof file.version !== 'number' || file.version > EXPORT_VERSION) {
     throw new Error('Versión de copia no soportada: actualiza la app.')

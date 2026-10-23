@@ -1,5 +1,5 @@
 /**
- * Contrato de dominio de Ruta 85. Lo comparten todos los módulos (datos del plan, lógica,
+ * Contrato de dominio de Cota. Lo comparten todos los módulos (datos del plan, lógica,
  * base de datos y pantallas). Cambiarlo es una decisión de arquitectura: no lo edites desde
  * un módulo concreto; si falta algo, añádelo aquí sin romper lo existente.
  */

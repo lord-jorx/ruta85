@@ -1,4 +1,4 @@
-# Ruta 85 · puesta en marcha de Supabase (nube opcional)
+# Cota · puesta en marcha de Supabase (nube opcional)
 
 La app funciona sin nada de esto (modo solo local, datos en el navegador). Supabase añade
 copia en la nube y sincronización entre dispositivos. Es gratis para un único usuario.

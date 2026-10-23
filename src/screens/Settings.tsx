@@ -574,7 +574,7 @@ export function Settings() {
         </div>
       </Card>
 
-      <p className="muted small">Ruta 85 · funciona sin conexión. Los datos se guardan primero en este dispositivo.</p>
+      <p className="muted small">Cota · funciona sin conexión. Los datos se guardan primero en este dispositivo.</p>
     </div>
   )
 }

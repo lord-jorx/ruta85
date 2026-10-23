@@ -22,7 +22,7 @@ const TABS: ReadonlyArray<{ to: string; label: string; icon: IconName; end?: boo
 export function AppShell() {
   const matches = useMatches()
   const last = matches[matches.length - 1]
-  const handle = (last?.handle ?? { title: 'Ruta 85' }) as RouteHandle
+  const handle = (last?.handle ?? { title: 'Cota' }) as RouteHandle
   const title = typeof handle.title === 'function' ? handle.title(last.params) : handle.title
 
   return (
@@ -38,7 +38,7 @@ export function AppShell() {
             </Link>
           )}
           <div className="app__heading grow">
-            <p className="app__kicker eyebrow">{handle.kicker ?? 'Ruta 85'}</p>
+            <p className="app__kicker eyebrow">{handle.kicker ?? 'Cota'}</p>
             <h1 className="app__title display">{title}</h1>
           </div>
           <NavLink to="/ajustes" className="icon-btn" aria-label="Ajustes">

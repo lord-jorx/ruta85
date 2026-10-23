@@ -133,7 +133,7 @@ export const GUIDE: GuideSection[] = [
     blocks: [
       'Crea 3 entrenamientos de tipo **Fuerza** en Garmin Connect: **A**, **B** y **C** (sin días asignados).',
       'Descanso en todos: "Pulsar botón Lap". Calentamiento: **Cardio 10:00** (cualquier máquina).',
-      '**Tu flujo:** Garmin guía (serie, reps, descanso), **OpenGym es la fuente de verdad de pesos** (y calcula la siguiente carga). Ruta 85 lleva el peso corporal, la cintura, el dolor de rodilla y la dieta.',
+      '**Tu flujo:** Garmin guía (serie, reps, descanso), **OpenGym es la fuente de verdad de pesos** (y calcula la siguiente carga). Cota lleva el peso corporal, la cintura, el dolor de rodilla y la dieta.',
       'Los 3 entrenamientos iniciales del Garmin (Day 1/2/3) son antiguos: archívalos o bórralos.'
     ]
   },
@@ -146,7 +146,7 @@ export const GUIDE: GuideSection[] = [
       '3. **El plan no asigna días:** cada día abre la rutina que toque según la rotación (sección 1).',
       '4. **Pon pesos iniciales:** las dos primeras semanas, con los que te sobren 3-4 reps (RIR 3-4).',
       '5. **Progresión:** OpenGym calcula la siguiente carga. Lineal (peso sube si completas las reps) o doble (reps suben dentro del rango, luego peso).',
-      '6. **Pasar los entrenos a Ruta 85:** OpenGym → Settings → Data → **Export backup (JSON)** y aquí, Ajustes → **Importar copia de OpenGym**. Reimportar la misma copia o una más nueva no duplica sesiones.'
+      '6. **Pasar los entrenos a Cota:** OpenGym → Settings → Data → **Export backup (JSON)** y aquí, Ajustes → **Importar copia de OpenGym**. Reimportar la misma copia o una más nueva no duplica sesiones.'
     ]
   },
   {

@@ -1,5 +1,5 @@
 /*
-  Ruta 85 · refinamiento (se carga al final, sobre tokens/base/components/screens).
+  Cota · refinamiento (se carga al final, sobre tokens/base/components/screens).
   Criterios: pantallas de trabajo, no páginas (taste app-screens + impeccable "Operate" + Emil Kowalski).
    - La cara condensada solo para el título y las cifras; etiquetas, botones y pestañas en la cara de texto.
    - Sin etiquetas en mayúsculas con tracking, sin patrones de puntos, sin barras de color de más de 1 px.

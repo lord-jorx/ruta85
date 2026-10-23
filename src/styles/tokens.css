@@ -1,5 +1,5 @@
 /*
-  Ruta 85 · tokens de diseño ("marcador de vestuario").
+  Cota · tokens de diseño ("marcador de vestuario").
   :root = claro. Oscuro (por defecto en la app, vía data-theme="dark" en <html>):
   se redefine con prefers-color-scheme cuando el usuario elige "Sistema" y
   explícitamente con [data-theme="dark"].

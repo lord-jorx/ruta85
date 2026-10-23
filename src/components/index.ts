@@ -1,4 +1,4 @@
-// Barril de componentes base de Ruta 85.
+// Barril de componentes base de Cota.
 export { AppShell } from './AppShell'
 export type { RouteHandle } from './AppShell'
 export { Card, Stat, Button, ButtonLink, NumberField, TextField, ScaleField, Segmented, Collapsible, EmptyState, Ring, usePrefersReducedMotion } from './ui'

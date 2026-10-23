@@ -1,5 +1,5 @@
 -- =====================================================================================
--- Ruta 85 · esquema inicial (Supabase / PostgreSQL)
+-- Cota · esquema inicial (Supabase / PostgreSQL)
 -- Una tabla por clave de TableMap (src/domain/types.ts). Pégalo entero en el SQL Editor.
 -- Es re-ejecutable: usa "if not exists" y recrea políticas y triggers.
 -- =====================================================================================

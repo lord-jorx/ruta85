@@ -1,4 +1,4 @@
-# Ruta 85
+# Cota
 
 PWA personal para gestionar un plan de entrenamiento de rotación A/B/C con seguimiento de peso, cintura y rodilla. Importa progresiones desde OpenGym, incluye dieta con objetivos y registro rápido. Los objetivos y registros personales viven en Supabase (RLS por usuario), nunca en el repo.
 
@@ -57,7 +57,7 @@ Sin estos, la app funciona solo en local (Dexie). Con ellos, sincroniza con Supa
 ## Importar copia de OpenGym
 
 1. OpenGym → Settings → Data → Export backup
-2. Ruta 85 → Ajustes → Importar copia
+2. Cota → Ajustes → Importar copia
 3. Se guardan en local (Dexie) y se sincronizan; reimportar no duplica
 
 **Nota**: La service role key de Supabase nunca va en la app ni en el repo.

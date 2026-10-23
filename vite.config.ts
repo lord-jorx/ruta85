@@ -15,8 +15,8 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['icon.svg'],
       manifest: {
-        name: 'Ruta 85',
-        short_name: 'Ruta 85',
+        name: 'Cota',
+        short_name: 'Cota',
         description: 'Plan de entrenamiento, peso y dieta.',
         lang: 'es',
         dir: 'ltr',
