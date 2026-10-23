@@ -18,6 +18,7 @@ import type {
   TableMap,
   TableName,
 } from '../domain/types'
+import { GARMIN_NOTE_PREFIX } from '../lib/garmin'
 import { db, enqueue, newId, nowISO, stampAfter, TABLE_NAMES, tbl } from './local'
 import { applyIncoming } from './merge'
 import { requestSync } from './sync'
@@ -28,6 +29,7 @@ import type {
   FavoriteInput,
   FoodLogPatch,
   ImportOpenGymOptions,
+  ImportGarminResult,
   ImportOpenGymResult,
   NewActivity,
   NewFoodLog,
@@ -187,6 +189,42 @@ export async function addActivity(input: NewActivity): Promise<Activity> {
 
 export async function deleteActivity(id: string): Promise<boolean> {
   return softDelete('activities', id)
+}
+
+/**
+ * Importa actividades de Garmin de una vez. Idempotente: una fila es repetida si ya hay una actividad viva
+ * con la misma fecha, tipo y minutos cuya nota empieza por «Garmin · », o si se repite dentro del propio lote.
+ */
+export async function importGarminActivities(rows: NewActivity[]): Promise<ImportGarminResult> {
+  return write(['activities'], async () => {
+    const key = (r: { date: string; kind: string; minutes: number }) => `${r.date}|${r.kind}|${r.minutes}`
+    const seen = new Set<string>()
+    for (const a of await db.activities.toArray()) {
+      if (live(a) && a.note?.startsWith(GARMIN_NOTE_PREFIX)) seen.add(key(a))
+    }
+    const fresh: Activity[] = []
+    let duplicates = 0
+    for (const r of rows) {
+      const k = key(r)
+      if (seen.has(k)) {
+        duplicates++
+        continue
+      }
+      seen.add(k)
+      fresh.push({
+        id: newId(),
+        updated_at: nowISO(),
+        deleted: false,
+        user_id: null,
+        date: r.date,
+        kind: r.kind,
+        minutes: r.minutes,
+        note: r.note ?? null,
+      })
+    }
+    await putRows('activities', fresh)
+    return { added: fresh.length, duplicates }
+  })
 }
 
 // ───────────────────────── Guardias ─────────────────────────

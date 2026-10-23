@@ -208,3 +208,106 @@
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
+
+/* ───────────── Dieta · buscar alimento (Open Food Facts) ───────────── */
+
+.fs {
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+}
+.fs__row {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+}
+.fs__row > .field {
+  flex: 1 1 auto;
+}
+.fs__row > .btn {
+  flex: none;
+}
+.fs__video {
+  display: block;
+  width: 100%;
+  max-height: 40dvh;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: #000;
+  border: 2px solid var(--accent);
+  border-radius: var(--r-md);
+}
+.fs__scan {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.fs__notice {
+  margin: 0;
+  min-height: 1.4em;
+}
+.fs__notice--error,
+.fs__offline {
+  display: block;
+  margin: 0;
+  padding: 8px 10px;
+  border-radius: var(--r-md);
+  background: var(--warn-wash);
+  color: var(--warn);
+  font-weight: 600;
+}
+.fs__notice--error {
+  background: var(--crit-wash);
+  color: var(--crit);
+}
+.fs__list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  max-height: 42dvh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.fs__item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  width: 100%;
+  min-height: 56px;
+  padding: 10px 12px;
+  text-align: left;
+  color: var(--ink);
+  background: var(--surface);
+  border: 2px solid var(--line);
+  border-radius: var(--r-md);
+  font: inherit;
+}
+.fs__item:active {
+  background: var(--accent-wash);
+}
+.fs__name {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 19px;
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+}
+.fs__picked {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  background: var(--surface-2);
+  border: 2px solid var(--accent);
+  border-radius: var(--r-md);
+}
+.fs__picked p {
+  margin: 0;
+}
+.fs__credit {
+  margin: 0;
+}

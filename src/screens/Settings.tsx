@@ -2,11 +2,12 @@ import { useState } from 'react'
 import type { ChangeEvent } from 'react'
 import { Button, Card, EmptyState, Icon, NumberField, Segmented, TextField, getTheme, setTheme, useToast } from '../components'
 import type { ThemeChoice } from '../components'
-import { bodyweightCsv, isISODate, parseOpenGymBackup, sha256Hex, todayISO } from '../lib'
+import { bodyweightCsv, isISODate, parseGarminCsv, parseOpenGymBackup, sha256Hex, todayISO } from '../lib'
 import {
   cloudConfigured,
   exportAll,
   importAll,
+  importGarminActivities,
   importOpenGym,
   saveSettings,
   signInWithEmail,
@@ -95,6 +96,10 @@ type ImportOutcome =
   | { kind: 'skipped'; filename: string }
   | { kind: 'error'; filename: string; message: string }
 
+type GarminOutcome =
+  | { kind: 'ok'; filename: string; added: number; duplicates: number; skipped: number; warnings: string[] }
+  | { kind: 'error'; filename: string; message: string }
+
 /** Límite de los archivos que se importan (una copia real de OpenGym pesa decenas de KB). */
 const MAX_FILE_BYTES = 20 * 1024 * 1024
 
@@ -110,6 +115,7 @@ export function Settings() {
   const [draft, setDraft] = useState<Draft>({})
   const [busy, setBusy] = useState<string | null>(null)
   const [outcome, setOutcome] = useState<ImportOutcome | null>(null)
+  const [garmin, setGarmin] = useState<GarminOutcome | null>(null)
   const [email, setEmail] = useState('')
   const [code, setCode] = useState('')
   const [linkSent, setLinkSent] = useState(false)
@@ -208,6 +214,21 @@ export function Settings() {
         }
       } catch (e) {
         setOutcome({ kind: 'error', filename: file.name, message: errMsg(e) })
+        throw e
+      }
+    })
+  }
+
+  async function importGarmin(file: File) {
+    await guarded('garmin', async () => {
+      try {
+        if (file.size > MAX_FILE_BYTES) throw new Error('Archivo demasiado grande (máx. 20 MB).')
+        const parsed = parseGarminCsv(await file.text())
+        const { added, duplicates } = await importGarminActivities(parsed.activities)
+        setGarmin({ kind: 'ok', filename: file.name, added, duplicates, skipped: parsed.skipped, warnings: parsed.warnings })
+        toast.show(`${added} actividades añadidas, ${duplicates} repetidas, ${parsed.skipped} omitidas`, 'ok')
+      } catch (e) {
+        setGarmin({ kind: 'error', filename: file.name, message: errMsg(e) })
         throw e
       }
     })
@@ -397,6 +418,46 @@ export function Settings() {
                 </li>
               ))}
             </ul>
+          )}
+        </div>
+      </Card>
+
+      <Card label="Garmin">
+        <div className="stack-sm">
+          <p className="muted small">
+            Garmin Connect web → Actividades → Exportar CSV. Se importan caminar, correr, bici, elíptica y otras; la fuerza
+            se omite porque el gimnasio ya viene de OpenGym. Si repites el mismo archivo no se duplica nada.
+          </p>
+          <FileButton
+            label={busy === 'garmin' ? 'Importando…' : 'Importar actividades de Garmin (CSV)'}
+            accept=".csv,text/csv"
+            onFile={importGarmin}
+            disabled={busy !== null}
+          />
+          {garmin?.kind === 'ok' && (
+            <div className="tbs-result" role="status">
+              <b>Importado {garmin.filename}</b>
+              <div className="small">
+                {garmin.added} actividades añadidas, {garmin.duplicates} repetidas, {garmin.skipped} omitidas (fuerza u otras)
+              </div>
+              {garmin.warnings.length > 0 && (
+                <>
+                  <div className="small">Avisos ({garmin.warnings.length}):</div>
+                  <ul>
+                    {garmin.warnings.slice(0, 8).map((w, i) => (
+                      <li key={i}>{w}</li>
+                    ))}
+                    {garmin.warnings.length > 8 && <li>… y {garmin.warnings.length - 8} más</li>}
+                  </ul>
+                </>
+              )}
+            </div>
+          )}
+          {garmin?.kind === 'error' && (
+            <p className="notice notice--warn" role="alert">
+              <Icon name="warn" size={20} />
+              No se pudo importar {garmin.filename}: {garmin.message}
+            </p>
           )}
         </div>
       </Card>

@@ -62,6 +62,11 @@ export type ImportOpenGymResult =
       warnings: string[]
     }
 
+export interface ImportGarminResult {
+  added: number
+  duplicates: number
+}
+
 // ───────────────────────── Entradas de escritura ─────────────────────────
 
 export type SettingsPatch = Partial<Omit<Settings, keyof SyncMeta>>

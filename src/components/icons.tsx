@@ -92,6 +92,13 @@ const PATHS = {
   ),
   llama: <path d="M12 3c1 3.5 5.5 5.5 5.5 10.5a5.5 5.5 0 0 1-11 0c0-2 1-3.4 2.2-4.5.2 1.6 1 2.4 1.8 2.8C10 9 10.5 5.5 12 3z" />,
   estrella: <path d="M12 3.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9-5.2-2.8-5.2 2.8 1-5.9L3.5 9.7l5.9-.8z" />,
+  buscar: (
+    <>
+      <circle cx="10.5" cy="10.5" r="6.5" />
+      <path d="M15.5 15.5L21 21" />
+    </>
+  ),
+  camara: <path d="M3.5 8V4.5H7M17 4.5h3.5V8M20.5 16v3.5H17M7 19.5H3.5V16M7 12h10" />,
 } satisfies Record<string, ReactNode>
 
 export type IconName = keyof typeof PATHS

@@ -25,6 +25,7 @@ import {
 import {
   Button,
   Card,
+  FoodSearch,
   Icon,
   NumberField,
   Ring,
@@ -542,6 +543,15 @@ export function Diet() {
           </>
         }
       >
+        {open && !editing && (
+          <FoodSearch
+            onPick={(f) => {
+              setLabel(f.label)
+              setKcal(f.kcal)
+              setProtein(f.protein_g)
+            }}
+          />
+        )}
         <Segmented label="Comida" options={MEALS} value={meal} onChange={setMeal} />
         <TextField label="Qué has comido" value={label} onChange={setLabel} placeholder="Pollo con arroz" autoComplete="off" />
         <div className="grid-2">
